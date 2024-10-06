@@ -3,15 +3,35 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Input } from "../../components/input";
 import { schema, SchemaType } from "./form.schema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useUserStore } from "../../store/user";
+import { useMutation } from "@tanstack/react-query";
+import { signUpUser } from "../../apis/auth/sign-up";
+import { useNavigate } from "react-router-dom";
+import { ROUTER } from "../../constants/router";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
+  const setUserToStore = useUserStore(state => state.setUser);
+  const navigate = useNavigate();
+
   const form = useForm<SchemaType>({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
 
+  const { mutate } = useMutation({
+    mutationFn: async (data: SchemaType) => {
+      return await signUpUser(data);
+    },
+    onSuccess: res => {
+      setUserToStore(res.data);
+      navigate(ROUTER.HOME);
+      toast.success("Successfully signed up!");
+    },
+  });
+
   function onSubmit(data: SchemaType) {
-    console.log(data);
+    mutate(data);
   }
 
   return (

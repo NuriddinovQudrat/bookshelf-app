@@ -9,7 +9,7 @@ const mutationCache = new MutationCache({
       error?.response?.data?.message ??
         error?.response?.statusText ??
         error?.message ??
-        "Xatolik yuz berdi",
+        "An Error Occured!",
     );
   },
 });
@@ -22,7 +22,7 @@ const queryCache = new QueryCache({
       error?.response?.data?.message ??
         error?.response?.statusText ??
         error?.message ??
-        "Xatolik yuz berdi",
+        "An Error Occured!",
     );
   },
 });
