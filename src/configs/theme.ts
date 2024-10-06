@@ -41,7 +41,7 @@ const theme = createTheme({
       styleOverrides: {
         root: () => ({
           transitionDuration: "0.2s",
-          borderRadius: "9999px",
+          borderRadius: "4px",
           textTransform: "inherit",
           color: "#ffffff",
           fontSize: "16px",

@@ -1,5 +1,5 @@
 export const ROUTER = {
   HOME: "/",
-  LOGIN: "/login",
+  SIGN_UP: "/sign-up",
   NOT_FOUND: "*",
 };
