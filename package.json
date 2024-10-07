@@ -16,6 +16,7 @@
     "@types/node": "^16.18.112",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
+    "ahooks": "^3.8.1",
     "axios": "^1.7.7",
     "crypto-js": "^4.2.0",
     "md5": "^2.3.0",

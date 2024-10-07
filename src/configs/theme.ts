@@ -8,7 +8,7 @@ const theme = createTheme({
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#f48fb1",
+      main: "rgba(25, 170, 117, 0.2)",
       contrastText: "#000000",
     },
     background: {
@@ -93,6 +93,15 @@ const theme = createTheme({
         },
         {
           props: {
+            variant: "h3",
+          },
+          style: () => ({
+            fontSize: "24px",
+            fontWeight: "600",
+          }),
+        },
+        {
+          props: {
             variant: "body1",
           },
           style: () => ({
@@ -110,6 +119,21 @@ const theme = createTheme({
           }),
         },
       ],
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          textDecoration: "none",
+          display: "block",
+          color: "#ffffff",
+          "&.active-link": {
+            backgroundColor: theme.palette.secondary.main,
+          },
+          "&.active-link *": {
+            color: theme.palette.primary.main,
+          },
+        }),
+      },
     },
   },
 });

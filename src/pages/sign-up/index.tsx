@@ -19,13 +19,13 @@ const SignUp = () => {
     resolver: yupResolver(schema),
   });
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (data: SchemaType) => {
       return await signUpUser(data);
     },
     onSuccess: res => {
       setUserToStore(res.data);
-      navigate(ROUTER.HOME);
+      navigate(ROUTER.BOOKS);
       toast.success("Successfully signed up!");
     },
   });
@@ -58,7 +58,9 @@ const SignUp = () => {
 
           <Input name="secret" type="string" control={form.control} placeholder={"Secret"} />
 
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit" disabled={isPending}>
+            Sign Up
+          </Button>
         </Box>
       </Container>
     </FormProvider>
