@@ -14,3 +14,13 @@ export const getAllBooks = async () => {
   });
   return response.data;
 };
+
+export const createBook = async (data: any) => {
+  const response = await request.post(ENDPOINTS.BOOKS, data, {
+    headers: {
+      Key: user ? user.key : undefined,
+      Sign: user ? generateSignature("POST", ENDPOINTS.BOOKS, data, user.secret) : undefined,
+    },
+  });
+  return response.data;
+};
