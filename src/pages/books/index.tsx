@@ -1,19 +1,10 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useBooks } from "../../hooks";
-import CreateBookModal from "./modals/create-book-modal";
 import { useState } from "react";
 import { BookWithStatusProps } from "../../types/api/books";
-import coverImg from "../../assets/images/cover.jpg";
+import CardItem from "./components/card-item";
+import CreateBookModal from "./modals/create-book-modal";
 
 const Books = () => {
   const { data, isLoading, isError } = useBooks();
@@ -66,36 +57,16 @@ const Books = () => {
         </Button>
       </Stack>
       <Grid container spacing={2} mt={"20px"}>
-        {data?.data === null ? (
+        {data?.data === null || data?.data?.length === 0 ? (
           <Stack width="100%" alignItems="center">
             <Typography color="text.secondary" variant="h3">
               No books found!
             </Typography>
           </Stack>
         ) : null}
+
         {data?.data?.map((item: BookWithStatusProps, index: number) => {
-          return (
-            <Grid size={3} key={index}>
-              <Card sx={{ width: "100%", border: "1px solid #00000030" }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={item.book.cover ? item.book.cover : coverImg}
-                    alt={item.book.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Author: {item.book.author}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                      Title: {item.book.title}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          );
+          return <CardItem item={item} key={index} />;
         })}
       </Grid>
     </Box>

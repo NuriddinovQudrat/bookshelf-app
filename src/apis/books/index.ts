@@ -15,11 +15,35 @@ export const getAllBooks = async () => {
   return response.data;
 };
 
-export const createBook = async (data: any) => {
+export const createBook = async (data: { isbn: string }) => {
   const response = await request.post(ENDPOINTS.BOOKS, data, {
     headers: {
       Key: user ? user.key : undefined,
       Sign: user ? generateSignature("POST", ENDPOINTS.BOOKS, data, user.secret) : undefined,
+    },
+  });
+  return response.data;
+};
+
+export const updateBook = async (data: any, id: number) => {
+  const response = await request.patch(`${ENDPOINTS.BOOKS}/${id}`, data, {
+    headers: {
+      Key: user ? user.key : undefined,
+      Sign: user
+        ? generateSignature("PATCH", `${ENDPOINTS.BOOKS}/${id}`, data, user.secret)
+        : undefined,
+    },
+  });
+  return response.data;
+};
+
+export const deleteBook = async (id: number) => {
+  const response = await request.delete(`${ENDPOINTS.BOOKS}/${id}`, {
+    headers: {
+      Key: user ? user.key : undefined,
+      Sign: user
+        ? generateSignature("DELETE", `${ENDPOINTS.BOOKS}/${id}`, "", user.secret)
+        : undefined,
     },
   });
   return response.data;

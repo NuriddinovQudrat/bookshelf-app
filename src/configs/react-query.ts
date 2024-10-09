@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const mutationCache = new MutationCache({
   onError: res => {
     const error: any = res;
-    console.log("mutation error", error);
+    // console.log("mutation error", error);
     toast.error(
       error?.response?.data?.message ??
         error?.response?.statusText ??
@@ -17,7 +17,7 @@ const mutationCache = new MutationCache({
 const queryCache = new QueryCache({
   onError: res => {
     const error: any = res;
-    console.log("query error", error);
+    // console.log("query error", error);
     toast.error(
       error?.response?.data?.message ??
         error?.response?.statusText ??
