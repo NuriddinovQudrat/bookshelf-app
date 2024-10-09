@@ -26,6 +26,7 @@ export const createBook = async (data: { isbn: string }) => {
 };
 
 export const updateBook = async (data: any, id: number) => {
+  data.status = Number(data.status);
   const response = await request.patch(`${ENDPOINTS.BOOKS}/${id}`, data, {
     headers: {
       Key: user ? user.key : undefined,
