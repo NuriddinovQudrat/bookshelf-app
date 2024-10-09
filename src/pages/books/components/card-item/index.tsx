@@ -5,6 +5,8 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Chip,
+  Stack,
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
@@ -40,27 +42,50 @@ const CardItem = (props: IProps) => {
   });
 
   return (
-    <Grid size={3} key={item.book.id}>
+    <Grid size={4} key={item.book.id}>
       <UpdateBookModal
         openUpdateBookModal={openUpdateBookModal}
         setOpenUpdateBookModal={setOpenUpdateBookModal}
         item={item}
       />
 
-      <Card sx={{ width: "100%", border: "1px solid #00000030" }}>
+      <Card variant="outlined">
         <CardActionArea>
-          <CardMedia
-            component="img"
-            height="300"
-            image={item.book.cover ? item.book.cover : coverImg}
-            alt={item.book.title}
-          />
+          <Stack position={"relative"} width={"100%"}>
+            {item.status === 0 ? (
+              <Chip
+                label="New"
+                color="info"
+                sx={{ position: "absolute", right: "10px", top: "10px" }}
+              />
+            ) : null}
+            {item.status === 1 ? (
+              <Chip
+                label="Reading"
+                color="warning"
+                sx={{ position: "absolute", right: "10px", top: "10px" }}
+              />
+            ) : null}
+            {item.status === 2 ? (
+              <Chip
+                label="Finished"
+                color="success"
+                sx={{ position: "absolute", right: "10px", top: "10px" }}
+              />
+            ) : null}
+            <CardMedia
+              component="img"
+              height="300"
+              image={item.book.cover ? item.book.cover : coverImg}
+              alt={item.book.title}
+            />
+          </Stack>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Author: {item.book.author}
+              {item.book.author}
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              Title: {item.book.title}
+              {item.book.title}
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               Isbn: {item.book.isbn}

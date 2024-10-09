@@ -85,7 +85,7 @@ const UpdateBookModal = (props: IProps) => {
               ]}
             />
             <Button type="submit" disabled={isPending}>
-              Create
+              Update
             </Button>
           </Box>
         </FormProvider>
