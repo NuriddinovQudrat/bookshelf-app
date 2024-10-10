@@ -1,7 +1,6 @@
 import {
   AppBar,
   Box,
-  Link,
   List,
   ListItem,
   ListItemButton,
@@ -10,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { MENU_OPTIONS } from "./menu-options";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { LogoutOutlined } from "@mui/icons-material";
 import { useUserStore } from "../../../store/user";
 
@@ -46,7 +45,12 @@ const Sidebar = () => {
         >
           <Stack>
             {MENU_OPTIONS.map(({ Icon, path, title }, index) => (
-              <Link key={index} href={path} className={pathname === path ? "active-link" : ""}>
+              <Link
+                key={index}
+                to={path}
+                style={{ textDecoration: "none", color: "#fff" }}
+                className={pathname === path ? "active-link" : ""}
+              >
                 <ListItem disablePadding sx={{ display: "block" }}>
                   <ListItemButton
                     sx={{
