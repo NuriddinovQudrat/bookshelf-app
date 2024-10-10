@@ -1,7 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { ROUTER } from "../constants/router";
 import Layout from "../layout";
-import NotFound from "../pages/not-found";
 import SignUp from "../pages/sign-up";
 import Books from "../pages/books";
 
@@ -18,7 +17,7 @@ export const userRouter = createBrowserRouter([
   },
   {
     path: ROUTER.NOT_FOUND,
-    element: <NotFound />,
+    element: <Books />,
   },
 ]);
 
