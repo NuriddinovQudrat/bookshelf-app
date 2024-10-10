@@ -3,6 +3,7 @@ import { ROUTER } from "../constants/router";
 import Layout from "../layout";
 import SignUp from "../pages/sign-up";
 import Books from "../pages/books";
+import NotFound from "../pages/not-found";
 
 export const userRouter = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ export const userRouter = createBrowserRouter([
   },
   {
     path: ROUTER.NOT_FOUND,
-    element: <Books />,
+    element: <NotFound />,
   },
 ]);
 
