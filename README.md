@@ -31,11 +31,12 @@ The Bookshelf App is a user-friendly application that allows users to manage the
 - **Update Books**: Users can edit existing book status.
 - **Delete Books**: Users can remove books from their collection when they no longer wish to keep them.
 
-## Built With
+## Used technologies
 
-- [![React][React.js]][React-url]
-- [![TypeScript][TypeScript]][TypeScript-url]
-- [![React Router][React-Router]][React-Router-url]
-- [![Axios][Axios]][Axios-url]
-- [![TanStack React Query][React-Query]][React-Query-url]
-- [![Material-UI][MUI]][MUI-url]
+- React
+- TypeScript
+- TanStack Query
+- Axios
+- Material UI
+- Zustand
+- React Hook Form
