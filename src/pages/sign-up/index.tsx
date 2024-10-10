@@ -27,6 +27,7 @@ const SignUp = () => {
       setUserToStore(res.data);
       navigate(ROUTER.BOOKS);
       toast.success("Successfully signed up!");
+      form.reset();
     },
   });
 
